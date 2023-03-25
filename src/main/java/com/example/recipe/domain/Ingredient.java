@@ -15,6 +15,9 @@ public class Ingredient {
     @ManyToOne
     private Recipe recipe;
 
+    @OneToOne
+    private UnitOfMeasure uom;
+
     public Long getId() {
         return id;
     }
