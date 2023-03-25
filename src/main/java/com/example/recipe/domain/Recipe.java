@@ -2,6 +2,8 @@ package com.example.recipe.domain;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 public class Recipe {
     @Id
@@ -14,12 +16,17 @@ public class Recipe {
     private String source;
     private String url;
     private String directions;
+    @Lob
+    private Byte[] image;
 
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
 
     @Enumerated(value = EnumType.STRING)
     private Difficulty difficulty;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+    private Set<Ingredient> ingredients;
 
     public Long getId() {
         return id;

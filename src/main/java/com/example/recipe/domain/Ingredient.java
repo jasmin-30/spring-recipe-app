@@ -1,9 +1,6 @@
 package com.example.recipe.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 
@@ -14,6 +11,9 @@ public class Ingredient {
     private Long id;
     private String description;
     private BigDecimal amount;
+
+    @ManyToOne
+    private Recipe recipe;
 
     public Long getId() {
         return id;
