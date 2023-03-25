@@ -1,9 +1,6 @@
 package com.example.recipe.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Recipe {
@@ -17,6 +14,8 @@ public class Recipe {
     private String source;
     private String url;
     private String directions;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Notes notes;
 
     public Long getId() {
         return id;
@@ -80,5 +79,13 @@ public class Recipe {
 
     public void setDirections(String directions) {
         this.directions = directions;
+    }
+
+    public Notes getNotes() {
+        return notes;
+    }
+
+    public void setNotes(Notes notes) {
+        this.notes = notes;
     }
 }

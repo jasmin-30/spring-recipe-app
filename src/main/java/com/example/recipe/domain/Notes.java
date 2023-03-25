@@ -1,15 +1,14 @@
 package com.example.recipe.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Notes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @OneToOne
+    private Recipe recipe;
     private String recipeNotes;
 
     public Long getId() {
@@ -18,6 +17,14 @@ public class Notes {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Recipe getRecipe() {
+        return recipe;
+    }
+
+    public void setRecipe(Recipe recipe) {
+        this.recipe = recipe;
     }
 
     public String getRecipeNotes() {
