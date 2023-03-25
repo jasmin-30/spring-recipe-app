@@ -38,4 +38,12 @@ public class Ingredient {
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
+
+    public Recipe getRecipe() {
+        return recipe;
+    }
+
+    public void setRecipe(Recipe recipe) {
+        this.recipe = recipe;
+    }
 }
