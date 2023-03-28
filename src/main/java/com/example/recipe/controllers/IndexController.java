@@ -20,7 +20,7 @@ public class IndexController {
         this.unitOfMeasureRepository = unitOfMeasureRepository;
     }
 
-    @RequestMapping({"", "/index"})
+    @RequestMapping({"", "/", "/index"})
     public String indexPage() {
         Optional<Category> categoryOptional = categoryRepository.findByDescription("American");
         Optional<UnitOfMeasure> unitOfMeasureOptional = unitOfMeasureRepository.findByDescription("TeaSpoon");
