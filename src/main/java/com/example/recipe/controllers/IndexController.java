@@ -23,7 +23,7 @@ public class IndexController {
     @RequestMapping({"", "/", "/index"})
     public String indexPage() {
         Optional<Category> categoryOptional = categoryRepository.findByDescription("American");
-        Optional<UnitOfMeasure> unitOfMeasureOptional = unitOfMeasureRepository.findByDescription("TeaSpoon");
+        Optional<UnitOfMeasure> unitOfMeasureOptional = unitOfMeasureRepository.findByDescription("Teaspoon");
 
 //        categoryOptional.ifPresent(category -> System.out.println(category.getId()));
 //        unitOfMeasureOptional.ifPresent(unitOfMeasure -> System.out.println(unitOfMeasure.getId()));
@@ -36,7 +36,7 @@ public class IndexController {
         if (unitOfMeasureOptional.isPresent())
             System.out.println(unitOfMeasureOptional.get().getId());
         else
-            System.out.println("No UnitOfMeasure found for tablespoon");
+            System.out.println("No UnitOfMeasure found for Teaspoon");
 
         return "index";
     }
