@@ -4,7 +4,9 @@ import com.example.recipe.domain.Category;
 import com.example.recipe.domain.UnitOfMeasure;
 import com.example.recipe.repositories.CategoryRepository;
 import com.example.recipe.repositories.UnitOfMeasureRepository;
+import com.example.recipe.services.RecipeService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Optional;
@@ -15,9 +17,12 @@ public class IndexController {
     private final CategoryRepository categoryRepository;
     private final UnitOfMeasureRepository unitOfMeasureRepository;
 
-    public IndexController(CategoryRepository categoryRepository, UnitOfMeasureRepository unitOfMeasureRepository) {
+    private final RecipeService recipeService;
+
+    public IndexController(CategoryRepository categoryRepository, UnitOfMeasureRepository unitOfMeasureRepository, RecipeService recipeService) {
         this.categoryRepository = categoryRepository;
         this.unitOfMeasureRepository = unitOfMeasureRepository;
+        this.recipeService = recipeService;
     }
 
     @RequestMapping({"", "/", "/index"})
@@ -39,5 +44,13 @@ public class IndexController {
             System.out.println("No UnitOfMeasure found for Teaspoon");
 
         return "index";
+    }
+
+    @RequestMapping({"/recipes"})
+    public String recipePage(Model model) {
+
+        model.addAttribute("recipes", recipeService.getRecipes());
+
+        return "recipe";
     }
 }
